@@ -1,0 +1,43 @@
+package ${package}.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import  ${package}.dao.${ClassName}Dao;
+import ${package}.pojo.${ClassName};
+import ${package}.service.${ClassName}Service;
+
+
+@Service
+public class ${ClassName}ServiceImpl implements ${ClassName}Service {
+    @Autowired
+    private ${ClassName}Dao ${className}Dao;
+
+    @Override
+    public List<${ClassName}> List(${ClassName} ${className}) {
+        return ${className}Dao.list(${className});
+    }
+
+    @Override
+    public ${ClassName} query(${pkColumn.attrType} id) {
+        return ${className}Dao.query(id);
+    }
+
+    @Override
+    public int add(${ClassName} ${className}) {
+        return ${className}Dao.add(${className});
+    }
+
+    @Override
+    public int edit(${ClassName} ${className}) {
+        return ${className}Dao.edit(${className});
+    }
+
+    @Override
+    public int delete(${pkColumn.attrType} id) {
+        return ${className}Dao.delete(id);
+    }
+
+}

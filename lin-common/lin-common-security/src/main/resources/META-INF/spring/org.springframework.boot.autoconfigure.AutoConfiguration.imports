@@ -1,0 +1,4 @@
+com.lin.common.security.aspect.PreAuthorizeAspect
+com.lin.common.security.handler.GlobalExceptionHandler
+com.lin.common.security.utils.GetLoginUser
+com.lin.common.security.interceptor.FeignAutoConfiguration

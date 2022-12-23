@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.generate.dao.GenDao">
+
+	<select id="list" resultType="map">
+		select table_name tableName, engine, table_comment tableComment, DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%S') createTime from information_schema.tables
+		where table_schema = (select database())
+		order by create_time desc
+	</select>
+
+
+	<select id="queryColumnByTableName" resultType="map">
+		select column_name columnName, data_type dataType, column_comment columnComment, column_key columnKey from information_schema.columns
+ 			where table_name = #{name} and table_schema = (select database()) order by ordinal_position
+	</select>
+
+</mapper>

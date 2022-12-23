@@ -1,0 +1,21 @@
+package ${package}.dao;
+
+import java.util.List;
+
+import ${package}.pojo.${ClassName};
+
+
+public interface ${ClassName}Dao {
+
+
+    public List<${ClassName}> list(${ClassName} ${className});
+
+    public ${ClassName} query(${pkColumn.attrType} id);
+
+    public int add(${ClassName} ${className});
+
+    public int edit(${ClassName} ${className});
+
+    public int delete(${pkColumn.attrType} id);
+
+}

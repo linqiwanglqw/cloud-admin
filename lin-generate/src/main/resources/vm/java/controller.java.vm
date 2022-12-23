@@ -1,0 +1,76 @@
+package ${package}.controller;
+
+
+import com.lin.utils.PageUtils;
+import com.lin.common.log.annotation.Log;
+import com.lin.common.security.annotation.RequiresPermissions;
+import com.lin.utils.R;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ${package}.service.${ClassName}Service;
+import ${package}.pojo.${ClassName};
+import java.util.List;
+
+@RestController
+@RequestMapping("/${className}")
+public class ${ClassName}Controller {
+    @Autowired
+    private ${ClassName}Service ${className}Service;
+
+    /**
+    * 查询列表
+* @return
+*/
+    @RequiresPermissions("${moduleName}:${className}:list")
+    @GetMapping("/list")
+    public Object list(${ClassName} ${className}) {
+        PageUtils.start();
+        List<${ClassName}> list = ${className}Service.List(${className});
+        return R.table(list);
+    }
+
+
+    /**
+    * 通过id 查询
+* @return
+*/
+    @RequiresPermissions("${moduleName}:${className}:query")
+    @GetMapping(value = "/{id}")
+    public Object query(@PathVariable("id") ${pkColumn.attrType} id) {
+        return R.ok(${className}Service.query(id));
+    }
+
+    /**
+     * 新增
+     */
+    @RequiresPermissions("${moduleName}:${className}:add")
+    @PostMapping
+    public Object add(@RequestBody ${ClassName} ${className}) {
+        return R.ok(${className}Service.add(${className}));
+    }
+
+    /**
+     * 修改
+     */
+    @RequiresPermissions("${moduleName}:${className}:edit")
+    @PutMapping
+    public Object edit(@RequestBody ${ClassName} ${className}) {
+        return R.ok(${className}Service.edit(${className}));
+    }
+
+    /**
+     * 删除
+     */
+    @RequiresPermissions("${moduleName}:${className}:remove")
+    @DeleteMapping("/{id}")
+    public Object delete(@PathVariable("id") ${pkColumn.attrType} id) {
+        return R.ok(${className}Service.delete(id));
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "lin-cloud-admin-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.6",
+    "@vueuse/core": "^9.1.0",
+    "axios": "^0.27.2",
+    "element-plus": "^2.2.12",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.0.17",
+    "screenfull": "^6.0.2",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.0",
+    "vite": "^3.0.0"
+  }
+}

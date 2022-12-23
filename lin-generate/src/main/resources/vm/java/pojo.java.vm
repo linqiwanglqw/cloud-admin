@@ -1,0 +1,16 @@
+package ${package}.pojo;
+import lombok.Data;
+
+import java.util.Date;
+
+@Data
+public class ${ClassName} {
+
+    #foreach($column in $columns)
+    /**
+     * $column.comments
+     */
+    private $column.attrType $column.attrName;
+    #end
+
+}

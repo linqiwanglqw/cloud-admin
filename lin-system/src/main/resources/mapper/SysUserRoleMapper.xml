@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.system.dao.SysUserRoleDao">
+
+    <resultMap type="com.lin.system.pojo.SysUserRole" id="SysUserRoleResult">
+        <result property="userId"    column="user_id"    />
+        <result property="roleId"    column="role_id"    />
+        <result property="id"    column="id"    />
+    </resultMap>
+
+
+    <sql id="selectSysUserRoleVo">
+        select user_id, role_id, id from sys_user_role
+    </sql>
+
+    <select id="list" parameterType="com.lin.system.pojo.SysUserRole" resultMap="SysUserRoleResult">
+        <include refid="selectSysUserRoleVo"/>
+    </select>
+
+
+    <select id="query" resultMap="SysUserRoleResult">
+        <include refid="selectSysUserRoleVo"/> where id = #{id}
+    </select>
+
+    <insert id="add" parameterType="com.lin.system.pojo.SysUserRole">
+        insert into sys_user_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="roleId != null">role_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="roleId != null">#{roleId},</if>
+         </trim>
+    </insert>
+
+    <update id="edit" parameterType="com.lin.system.pojo.SysUserRole">
+        update sys_user_role
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="roleId != null">role_id = #{roleId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from sys_user_role where id = #{id}
+    </delete>
+
+
+</mapper>
